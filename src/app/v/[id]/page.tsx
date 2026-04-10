@@ -85,12 +85,15 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
         <p className="text-zinc-400 mb-8 text-sm md:text-base">If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in.</p>
         
         {/* Calendly inline widget begin */}
-        <div 
-          className="calendly-inline-widget rounded-xl border border-zinc-800 overflow-hidden shadow-2xl" 
-          data-url="https://calendly.com/zach-dl/30min?hide_gdpr_banner=1&background_color=ececec" 
-          style={{ minWidth: '320px', height: '700px' }}
-        ></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async dangerouslySetInnerHTML={{ __html: '' }}></script>
+        <div className="rounded-xl border border-zinc-800 overflow-hidden shadow-2xl bg-zinc-900 w-full h-[700px]">
+          <iframe 
+            src="https://calendly.com/zach-dl/30min?hide_gdpr_banner=1&background_color=ececec" 
+            width="100%" 
+            height="100%" 
+            frameBorder="0" 
+            title="Select a Date & Time - Calendly"
+          ></iframe>
+        </div>
         {/* Calendly inline widget end */}
       </div>
       
