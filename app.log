@@ -6,7 +6,7 @@
 - Local:         http://localhost:3000
 - Network:       http://192.168.1.151:3000
 - Environments: .env.local
-✓ Ready in 247ms
+✓ Ready in 235ms
 ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
  We detected multiple lockfiles and selected the directory of /Users/godelbot/Desktop/workspace/package-lock.json as the root directory.
  To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
@@ -15,185 +15,85 @@
    * /Users/godelbot/Desktop/workspace/godel-video-app/package-lock.json
 
 
- GET / 200 in 139ms (next.js: 66ms, application-code: 73ms)
- GET / 200 in 47ms (next.js: 9ms, application-code: 38ms)
+ GET / 200 in 204ms (next.js: 78ms, application-code: 125ms)
+ GET / 200 in 81ms (next.js: 956µs, application-code: 80ms)
+ GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 200 in 416ms (next.js: 281ms, application-code: 135ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 395ms (next.js: 259ms, application-code: 136ms)
+ GET / 200 in 50ms (next.js: 8ms, application-code: 41ms)
 Uploading to Cloudflare R2 bucket: godel-video
 Successfully uploaded to R2.
- POST /api/upload 200 in 4.2s (next.js: 205ms, application-code: 4.0s)
-⨯ ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  [90m1 |[0m [36mimport[0m { notFound } [36mfrom[0m [32m"next/navigation"[0m;
-  [90m2 |[0m [36mimport[0m { [33mS3Client[0m, [33mGetObjectCommand[0m } [36mfrom[0m [32m"@aws-sdk/client-s3"[0m;
-[31m[1m>[0m [90m3 |[0m [36mimport[0m { getSignedUrl } [36mfrom[0m [32m"@aws-sdk/s3-request-presigner"[0m;
-  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  [90m4 |[0m
-  [90m5 |[0m [36mconst[0m s3Client = [36mnew[0m [33mS3Client[0m({
-  [90m6 |[0m   region: [32m"auto"[0m,
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
- GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 500 in 806ms (next.js: 753ms, application-code: 54ms)
-[browser] Uncaught Error: ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-    at <unknown> (Error: ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1)
-    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-    at <unknown> (Error: (./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1)
-    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
-[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-https://nextjs.org/docs/messages/module-not-found 
-[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-https://nextjs.org/docs/messages/module-not-found 
-✓ Compiled in 272ms
- GET / 200 in 117ms (next.js: 52ms, application-code: 65ms)
- GET / 200 in 47ms (next.js: 1213µs, application-code: 46ms)
- GET / 200 in 21ms (next.js: 3ms, application-code: 19ms)
- GET / 200 in 10ms (next.js: 991µs, application-code: 9ms)
-Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
-  13 |
-  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
-> 15 |   const { filename } = params;
-     |           ^
-  16 |
-  17 |   let videoUrl = "";
-  18 |
-Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
-    at ignore-listed frames
- GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 404 in 406ms (next.js: 347ms, application-code: 58ms)
-[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-https://nextjs.org/docs/messages/module-not-found 
-[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-https://nextjs.org/docs/messages/module-not-found 
-[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-https://nextjs.org/docs/messages/module-not-found 
-[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-https://nextjs.org/docs/messages/module-not-found 
-[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
-Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
-  1 | import { notFound } from "next/navigation";
-  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | const s3Client = new S3Client({
-  6 |   region: "auto",
-
-https://nextjs.org/docs/messages/module-not-found 
-Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
-  13 |
-  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
-> 15 |   const { filename } = params;
-     |           ^
-  16 |
-  17 |   let videoUrl = "";
-  18 |
-Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
-    at ignore-listed frames
- GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 404 in 63ms (next.js: 8ms, application-code: 54ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 4.2s (next.js: 51ms, application-code: 4.2s)
-Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
-  13 |
-  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
-> 15 |   const { filename } = params;
-     |           ^
-  16 |
-  17 |   let videoUrl = "";
-  18 |
-Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
-    at ignore-listed frames
- GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 404 in 52ms (next.js: 5ms, application-code: 48ms)
- GET / 200 in 48ms (next.js: 3ms, application-code: 44ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 5.4s (next.js: 8ms, application-code: 5.4s)
-Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
-  13 |
-  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
-> 15 |   const { filename } = params;
-     |           ^
-  16 |
-  17 |   let videoUrl = "";
-  18 |
-Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
-    at ignore-listed frames
- GET /watch/e907de0d-69c6-4970-8320-36154bed8a3f/e907de0d-69c6-4970-8320-36154bed8a3f.mp4 404 in 73ms (next.js: 8ms, application-code: 64ms)
- GET / 200 in 100ms (next.js: 5ms, application-code: 96ms)
- GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 200 in 83ms (next.js: 5ms, application-code: 78ms)
- GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 200 in 83ms (next.js: 27ms, application-code: 56ms)
- GET /watch/e907de0d-69c6-4970-8320-36154bed8a3f/e907de0d-69c6-4970-8320-36154bed8a3f.mp4 200 in 59ms (next.js: 21ms, application-code: 38ms)
- GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 200 in 81ms (next.js: 20ms, application-code: 61ms)
+ POST /api/upload 200 in 5.3s (next.js: 140ms, application-code: 5.1s)
+ GET / 200 in 170ms (next.js: 132ms, application-code: 38ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 175ms (next.js: 66ms, application-code: 110ms)
+ GET / 200 in 38ms (next.js: 1531µs, application-code: 36ms)
+ GET / 200 in 38ms (next.js: 1859µs, application-code: 36ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 54ms (next.js: 1412µs, application-code: 53ms)
+ GET / 200 in 42ms (next.js: 1577µs, application-code: 40ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 60ms (next.js: 1203µs, application-code: 59ms)
+ GET / 200 in 36ms (next.js: 1591µs, application-code: 34ms)
+ GET / 200 in 43ms (next.js: 1630µs, application-code: 41ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 58ms (next.js: 946µs, application-code: 57ms)
+ GET / 200 in 54ms (next.js: 2ms, application-code: 52ms)
+ GET / 200 in 41ms (next.js: 1732µs, application-code: 40ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 64ms (next.js: 9ms, application-code: 56ms)
+ GET / 200 in 56ms (next.js: 1462µs, application-code: 54ms)
+ GET / 200 in 35ms (next.js: 930µs, application-code: 34ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 60ms (next.js: 10ms, application-code: 50ms)
+ GET / 200 in 49ms (next.js: 14ms, application-code: 35ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 62ms (next.js: 1463µs, application-code: 60ms)
+ GET / 200 in 40ms (next.js: 1093µs, application-code: 39ms)
+ GET / 200 in 34ms (next.js: 1064µs, application-code: 33ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 58ms (next.js: 2ms, application-code: 55ms)
+ GET / 200 in 38ms (next.js: 1608µs, application-code: 36ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 53ms (next.js: 1651µs, application-code: 51ms)
+ GET / 200 in 58ms (next.js: 2ms, application-code: 56ms)
+ GET / 200 in 48ms (next.js: 1242µs, application-code: 46ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 69ms (next.js: 8ms, application-code: 60ms)
+ GET / 200 in 53ms (next.js: 17ms, application-code: 36ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 70ms (next.js: 1768µs, application-code: 68ms)
+ GET / 200 in 40ms (next.js: 1600µs, application-code: 39ms)
+ GET / 200 in 27ms (next.js: 1311µs, application-code: 25ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 42ms (next.js: 1496µs, application-code: 41ms)
+ GET / 200 in 28ms (next.js: 1038µs, application-code: 27ms)
+ GET / 200 in 25ms (next.js: 1140µs, application-code: 24ms)
+ GET / 200 in 26ms (next.js: 1328µs, application-code: 25ms)
+ GET / 200 in 18ms (next.js: 841µs, application-code: 17ms)
+ GET / 200 in 11ms (next.js: 826µs, application-code: 10ms)
+✓ Compiled in 158ms
+ GET / 200 in 109ms (next.js: 8ms, application-code: 101ms)
+ GET / 200 in 70ms (next.js: 29ms, application-code: 41ms)
+ GET / 200 in 31ms (next.js: 2ms, application-code: 29ms)
+ GET / 200 in 29ms (next.js: 1224µs, application-code: 28ms)
+ GET / 200 in 33ms (next.js: 3ms, application-code: 30ms)
+ GET / 200 in 28ms (next.js: 727µs, application-code: 27ms)
+ GET / 200 in 29ms (next.js: 812µs, application-code: 28ms)
+ GET / 200 in 27ms (next.js: 968µs, application-code: 26ms)
+ GET / 200 in 29ms (next.js: 748µs, application-code: 28ms)
+ GET / 200 in 33ms (next.js: 761µs, application-code: 32ms)
+ GET / 200 in 32ms (next.js: 854µs, application-code: 31ms)
+ GET / 200 in 29ms (next.js: 1136µs, application-code: 28ms)
+ GET / 200 in 29ms (next.js: 1314µs, application-code: 27ms)
+ GET / 200 in 30ms (next.js: 871µs, application-code: 29ms)
+ GET / 200 in 40ms (next.js: 921µs, application-code: 39ms)
+ GET / 200 in 54ms (next.js: 820µs, application-code: 53ms)
+ GET / 200 in 61ms (next.js: 1470µs, application-code: 60ms)
+ GET / 200 in 86ms (next.js: 4ms, application-code: 82ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 404 in 312ms (next.js: 236ms, application-code: 75ms)
+ GET / 200 in 65ms (next.js: 8ms, application-code: 57ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 404 in 55ms (next.js: 3ms, application-code: 51ms)
+ GET / 200 in 64ms (next.js: 1414µs, application-code: 62ms)
+ GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 404 in 83ms (next.js: 15ms, application-code: 68ms)
+ GET / 200 in 34ms (next.js: 5ms, application-code: 29ms)
+ GET / 200 in 29ms (next.js: 1509µs, application-code: 28ms)
+ GET / 200 in 22ms (next.js: 2ms, application-code: 19ms)
+ GET / 200 in 22ms (next.js: 1786µs, application-code: 20ms)
+ GET / 200 in 31ms (next.js: 1880µs, application-code: 30ms)
+ GET / 200 in 37ms (next.js: 2ms, application-code: 34ms)
+ GET / 200 in 32ms (next.js: 1703µs, application-code: 31ms)
+ GET / 200 in 29ms (next.js: 1174µs, application-code: 28ms)
+ GET / 200 in 23ms (next.js: 851µs, application-code: 22ms)
+ GET / 200 in 22ms (next.js: 822µs, application-code: 22ms)
+ GET / 200 in 25ms (next.js: 763µs, application-code: 24ms)
+ GET / 200 in 25ms (next.js: 751µs, application-code: 24ms)
+ GET / 200 in 17ms (next.js: 1617µs, application-code: 16ms)
+ GET / 200 in 9ms (next.js: 837µs, application-code: 8ms)
