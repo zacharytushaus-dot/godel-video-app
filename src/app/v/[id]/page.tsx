@@ -17,16 +17,25 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
 
   let videoUrl = "";
 
-  try {
-    const command = new GetObjectCommand({
-      Bucket: "godel-video",
-      Key: `${id}.mp4`,
-    });
-    videoUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
-  } catch (error) {
-    console.error("Failed to generate signed URL:", error);
-    return notFound();
-  }
+    try {
+      const command = new GetObjectCommand({
+        Bucket: "godel-video",
+        Key: `${id}.mp4`,
+      });
+      videoUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+    } catch (error) {
+      console.error("Failed to generate signed URL:", error);
+      // Let's try .mov if .mp4 fails just in case
+      try {
+        const fallbackCommand = new GetObjectCommand({
+          Bucket: "godel-video",
+          Key: `${id}.mov`, 
+        });
+        videoUrl = await getSignedUrl(s3Client, fallbackCommand, { expiresIn: 3600 });
+      } catch (fallbackError) {
+        return notFound();
+      }
+    }
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center pt-12 font-sans">
