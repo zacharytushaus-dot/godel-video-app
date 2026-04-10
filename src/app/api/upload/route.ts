@@ -6,6 +6,9 @@ import ffmpeg from "fluent-ffmpeg";
 import { ensureOverlay } from "@/lib/overlay";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
+import { NodeHttpHandler } from "@smithy/node-http-handler";
+import * as https from "https";
+
 const s3Client = new S3Client({
   region: "auto",
   endpoint: `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,
@@ -14,12 +17,11 @@ const s3Client = new S3Client({
     secretAccessKey: process.env.CLOUDFLARE_SECRET_ACCESS_KEY || "",
   },
   // Ensure strict TLS routing for Windows SSL compatibility
-  requestHandler: {
-    requestTimeout: 30000,
-    httpsAgent: new (require("https").Agent)({
-      rejectUnauthorized: false,
-    }),
-  }
+  requestHandler: new NodeHttpHandler({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false
+    })
+  })
 });
 
 export async function POST(req: Request) {
