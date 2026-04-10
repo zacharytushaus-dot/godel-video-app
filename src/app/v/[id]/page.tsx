@@ -84,14 +84,10 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
         <h2 className="text-2xl font-bold mb-3 text-white">Let’s talk!</h2>
         <p className="text-zinc-400 mb-8 text-sm md:text-base">If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in.</p>
         
-        <div className="h-[500px] w-full bg-zinc-900 flex items-center justify-center rounded-xl border border-zinc-800">
-          <div className="text-center p-6">
-            <p className="text-zinc-500 italic mb-4">[Calendly Embed Code Goes Here]</p>
-            <a href="https://calendly.com" target="_blank" className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-500 font-semibold transition">
-              Book a Demo
-            </a>
-          </div>
-        </div>
+        {/* Calendly inline widget begin */}
+        <div className="calendly-inline-widget rounded-xl border border-zinc-800 overflow-hidden" data-url="https://calendly.com/zach-dl/30min?hide_gdpr_banner=1" style={{ minWidth: '320px', height: '700px' }}></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        {/* Calendly inline widget end */}
       </div>
       
     </div>
