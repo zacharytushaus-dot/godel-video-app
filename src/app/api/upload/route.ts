@@ -19,10 +19,9 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
     const file = formData.get("video") as File;
-    const title = formData.get("title") as string;
-    const subtitle = formData.get("subtitle") as string;
+    const name = formData.get("name") as string;
 
-    if (!file) {
+    if (!file || !name) {
       return NextResponse.json({ error: "Missing video" }, { status: 400 });
     }
 
@@ -52,7 +51,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Cloud storage upload failed", details: s3Error?.message ?? "" }, { status: 500 });
     }
 
-    const overlayPath = await ensureOverlay(id, title, subtitle);
+    const overlayPath = await ensureOverlay(id, name);
 
     const gifFilename = `${id}.gif`;
     const gifPath = path.join(process.cwd(), "public/gifs", gifFilename);
