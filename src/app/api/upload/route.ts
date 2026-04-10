@@ -26,7 +26,8 @@ export async function POST(req: Request) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const id = uuidv4();
+    // Create a 6 character short ID instead of a massive 36 character UUID
+    const id = uuidv4().slice(0, 6);
 
     const videoExt = path.extname(file.name) || ".mp4";
     const filename = `${id}${videoExt}`;

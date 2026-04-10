@@ -135,3 +135,7 @@ Successfully uploaded to R2.
 Uploading to Cloudflare R2 bucket: godel-video
 Successfully uploaded to R2.
  POST /api/upload 200 in 4.1s (next.js: 6ms, application-code: 4.1s)
+ GET / 200 in 70ms (next.js: 22ms, application-code: 48ms)
+Uploading to Cloudflare R2 bucket: godel-video
+Successfully uploaded to R2.
+ POST /api/upload 200 in 7.5s (next.js: 7ms, application-code: 7.5s)
