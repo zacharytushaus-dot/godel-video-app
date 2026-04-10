@@ -87,8 +87,8 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
         {/* Calendly inline widget begin */}
         <div 
           className="calendly-inline-widget rounded-xl border border-zinc-800 overflow-hidden shadow-2xl" 
-          data-url="https://calendly.com/zach-dl/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ececec" 
-          style={{ minWidth: '320px', height: '600px' }}
+          data-url="https://calendly.com/zach-dl/30min?hide_gdpr_banner=1&background_color=ececec" 
+          style={{ minWidth: '320px', height: '700px' }}
         ></div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async dangerouslySetInnerHTML={{ __html: '' }}></script>
         {/* Calendly inline widget end */}
