@@ -6,7 +6,7 @@
 - Local:         http://localhost:3000
 - Network:       http://192.168.1.151:3000
 - Environments: .env.local
-✓ Ready in 235ms
+✓ Ready in 258ms
 ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
  We detected multiple lockfiles and selected the directory of /Users/godelbot/Desktop/workspace/package-lock.json as the root directory.
  To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
@@ -15,127 +15,10 @@
    * /Users/godelbot/Desktop/workspace/godel-video-app/package-lock.json
 
 
- GET / 200 in 204ms (next.js: 78ms, application-code: 125ms)
- GET / 200 in 81ms (next.js: 956µs, application-code: 80ms)
- GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 200 in 416ms (next.js: 281ms, application-code: 135ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 395ms (next.js: 259ms, application-code: 136ms)
- GET / 200 in 50ms (next.js: 8ms, application-code: 41ms)
+ GET / 200 in 176ms (next.js: 88ms, application-code: 87ms)
+ GET / 200 in 54ms (next.js: 11ms, application-code: 43ms)
 Uploading to Cloudflare R2 bucket: godel-video
 Successfully uploaded to R2.
- POST /api/upload 200 in 5.3s (next.js: 140ms, application-code: 5.1s)
- GET / 200 in 170ms (next.js: 132ms, application-code: 38ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 175ms (next.js: 66ms, application-code: 110ms)
- GET / 200 in 38ms (next.js: 1531µs, application-code: 36ms)
- GET / 200 in 38ms (next.js: 1859µs, application-code: 36ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 54ms (next.js: 1412µs, application-code: 53ms)
- GET / 200 in 42ms (next.js: 1577µs, application-code: 40ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 60ms (next.js: 1203µs, application-code: 59ms)
- GET / 200 in 36ms (next.js: 1591µs, application-code: 34ms)
- GET / 200 in 43ms (next.js: 1630µs, application-code: 41ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 58ms (next.js: 946µs, application-code: 57ms)
- GET / 200 in 54ms (next.js: 2ms, application-code: 52ms)
- GET / 200 in 41ms (next.js: 1732µs, application-code: 40ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 64ms (next.js: 9ms, application-code: 56ms)
- GET / 200 in 56ms (next.js: 1462µs, application-code: 54ms)
- GET / 200 in 35ms (next.js: 930µs, application-code: 34ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 60ms (next.js: 10ms, application-code: 50ms)
- GET / 200 in 49ms (next.js: 14ms, application-code: 35ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 62ms (next.js: 1463µs, application-code: 60ms)
- GET / 200 in 40ms (next.js: 1093µs, application-code: 39ms)
- GET / 200 in 34ms (next.js: 1064µs, application-code: 33ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 58ms (next.js: 2ms, application-code: 55ms)
- GET / 200 in 38ms (next.js: 1608µs, application-code: 36ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 53ms (next.js: 1651µs, application-code: 51ms)
- GET / 200 in 58ms (next.js: 2ms, application-code: 56ms)
- GET / 200 in 48ms (next.js: 1242µs, application-code: 46ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 69ms (next.js: 8ms, application-code: 60ms)
- GET / 200 in 53ms (next.js: 17ms, application-code: 36ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 70ms (next.js: 1768µs, application-code: 68ms)
- GET / 200 in 40ms (next.js: 1600µs, application-code: 39ms)
- GET / 200 in 27ms (next.js: 1311µs, application-code: 25ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 200 in 42ms (next.js: 1496µs, application-code: 41ms)
- GET / 200 in 28ms (next.js: 1038µs, application-code: 27ms)
- GET / 200 in 25ms (next.js: 1140µs, application-code: 24ms)
- GET / 200 in 26ms (next.js: 1328µs, application-code: 25ms)
- GET / 200 in 18ms (next.js: 841µs, application-code: 17ms)
- GET / 200 in 11ms (next.js: 826µs, application-code: 10ms)
-✓ Compiled in 158ms
- GET / 200 in 109ms (next.js: 8ms, application-code: 101ms)
- GET / 200 in 70ms (next.js: 29ms, application-code: 41ms)
- GET / 200 in 31ms (next.js: 2ms, application-code: 29ms)
- GET / 200 in 29ms (next.js: 1224µs, application-code: 28ms)
- GET / 200 in 33ms (next.js: 3ms, application-code: 30ms)
- GET / 200 in 28ms (next.js: 727µs, application-code: 27ms)
- GET / 200 in 29ms (next.js: 812µs, application-code: 28ms)
- GET / 200 in 27ms (next.js: 968µs, application-code: 26ms)
- GET / 200 in 29ms (next.js: 748µs, application-code: 28ms)
- GET / 200 in 33ms (next.js: 761µs, application-code: 32ms)
- GET / 200 in 32ms (next.js: 854µs, application-code: 31ms)
- GET / 200 in 29ms (next.js: 1136µs, application-code: 28ms)
- GET / 200 in 29ms (next.js: 1314µs, application-code: 27ms)
- GET / 200 in 30ms (next.js: 871µs, application-code: 29ms)
- GET / 200 in 40ms (next.js: 921µs, application-code: 39ms)
- GET / 200 in 54ms (next.js: 820µs, application-code: 53ms)
- GET / 200 in 61ms (next.js: 1470µs, application-code: 60ms)
- GET / 200 in 86ms (next.js: 4ms, application-code: 82ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 404 in 312ms (next.js: 236ms, application-code: 75ms)
- GET / 200 in 65ms (next.js: 8ms, application-code: 57ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 404 in 55ms (next.js: 3ms, application-code: 51ms)
- GET / 200 in 64ms (next.js: 1414µs, application-code: 62ms)
- GET /watch/1156c3a7-2f7c-4275-889a-20baa0d380f1/1156c3a7-2f7c-4275-889a-20baa0d380f1.mp4 404 in 83ms (next.js: 15ms, application-code: 68ms)
- GET / 200 in 34ms (next.js: 5ms, application-code: 29ms)
- GET / 200 in 29ms (next.js: 1509µs, application-code: 28ms)
- GET / 200 in 22ms (next.js: 2ms, application-code: 19ms)
- GET / 200 in 22ms (next.js: 1786µs, application-code: 20ms)
- GET / 200 in 31ms (next.js: 1880µs, application-code: 30ms)
- GET / 200 in 37ms (next.js: 2ms, application-code: 34ms)
- GET / 200 in 32ms (next.js: 1703µs, application-code: 31ms)
- GET / 200 in 29ms (next.js: 1174µs, application-code: 28ms)
- GET / 200 in 23ms (next.js: 851µs, application-code: 22ms)
- GET / 200 in 22ms (next.js: 822µs, application-code: 22ms)
- GET / 200 in 25ms (next.js: 763µs, application-code: 24ms)
- GET / 200 in 25ms (next.js: 751µs, application-code: 24ms)
- GET / 200 in 17ms (next.js: 1617µs, application-code: 16ms)
- GET / 200 in 9ms (next.js: 837µs, application-code: 8ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 5.7s (next.js: 78ms, application-code: 5.6s)
- GET / 200 in 46ms (next.js: 5ms, application-code: 41ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 5.4s (next.js: 4ms, application-code: 5.4s)
- GET / 200 in 28ms (next.js: 6ms, application-code: 23ms)
- GET / 200 in 24ms (next.js: 1061µs, application-code: 22ms)
- GET / 200 in 22ms (next.js: 1340µs, application-code: 21ms)
- GET / 200 in 23ms (next.js: 699µs, application-code: 22ms)
- GET / 200 in 23ms (next.js: 709µs, application-code: 22ms)
- GET / 200 in 22ms (next.js: 694µs, application-code: 22ms)
- GET / 200 in 21ms (next.js: 1095µs, application-code: 20ms)
- GET / 200 in 22ms (next.js: 1154µs, application-code: 21ms)
- GET / 200 in 27ms (next.js: 629µs, application-code: 26ms)
- GET / 200 in 37ms (next.js: 624µs, application-code: 37ms)
- GET / 200 in 38ms (next.js: 1354µs, application-code: 37ms)
- GET / 200 in 49ms (next.js: 1503µs, application-code: 47ms)
- GET / 200 in 40ms (next.js: 1368µs, application-code: 38ms)
- GET / 200 in 36ms (next.js: 12ms, application-code: 23ms)
- GET / 200 in 21ms (next.js: 791µs, application-code: 21ms)
- GET / 200 in 22ms (next.js: 756µs, application-code: 21ms)
- GET / 200 in 21ms (next.js: 662µs, application-code: 21ms)
- GET / 200 in 22ms (next.js: 724µs, application-code: 21ms)
- GET / 200 in 14ms (next.js: 694µs, application-code: 14ms)
- GET / 200 in 9ms (next.js: 668µs, application-code: 8ms)
- GET / 200 in 66ms (next.js: 18ms, application-code: 47ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 7.9s (next.js: 5ms, application-code: 7.9s)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 4.8s (next.js: 24ms, application-code: 4.7s)
- GET / 200 in 51ms (next.js: 6ms, application-code: 45ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 4.1s (next.js: 6ms, application-code: 4.1s)
- GET / 200 in 70ms (next.js: 22ms, application-code: 48ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 7.5s (next.js: 7ms, application-code: 7.5s)
+ POST /api/upload 200 in 5.3s (next.js: 213ms, application-code: 5.1s)
+✓ Compiled in 317ms
+✓ Compiled in 64ms

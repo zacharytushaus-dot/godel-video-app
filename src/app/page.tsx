@@ -4,18 +4,20 @@ import { useState } from "react";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
-  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file || !name) return;
+    if (!file || !title || !subtitle) return;
 
     setLoading(true);
     const formData = new FormData();
     formData.append("video", file);
-    formData.append("name", name);
+    formData.append("title", title);
+    formData.append("subtitle", subtitle);
 
     try {
       const res = await fetch("/api/upload", {
@@ -40,10 +42,17 @@ export default function Home() {
       <form onSubmit={handleUpload} className="flex flex-col gap-4 w-full max-w-md">
         <input 
           type="text" 
-          placeholder="GIF Overlay Text (e.g. Hey Rich - Godel Demo)" 
+          placeholder="GIF Title (e.g. Let's cut the bloat.)" 
           className="p-3 bg-zinc-800 rounded border border-zinc-700"
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
+          value={title} 
+          onChange={(e) => setTitle(e.target.value)} 
+        />
+        <input 
+          type="text" 
+          placeholder="GIF Subtext (e.g. I’d love to show you a brief tear-down of your setup.)" 
+          className="p-3 bg-zinc-800 rounded border border-zinc-700"
+          value={subtitle} 
+          onChange={(e) => setSubtitle(e.target.value)} 
         />
         <input 
           type="file" 
@@ -54,7 +63,7 @@ export default function Home() {
         
         <button 
           type="submit" 
-          disabled={loading || !file || !name}
+          disabled={loading || !file || !title || !subtitle}
           className="bg-blue-600 hover:bg-blue-500 disabled:bg-zinc-600 font-bold p-3 rounded transition"
         >
           {loading ? "Processing..." : "Generate Loom Killer"}

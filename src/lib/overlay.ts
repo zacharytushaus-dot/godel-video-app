@@ -2,7 +2,7 @@ import { createCanvas, registerFont } from "canvas";
 import { promises as fs } from "fs";
 import path from "path";
 
-export async function ensureOverlay(id: string, name: string): Promise<string> {
+export async function ensureOverlay(id: string, title: string, subtitle: string): Promise<string> {
   const overlaysDir = path.join(process.cwd(), "public", "overlays");
   await fs.mkdir(overlaysDir, { recursive: true });
 
@@ -16,7 +16,7 @@ export async function ensureOverlay(id: string, name: string): Promise<string> {
 
   // Basic overlay: white text centered on a semi-transparent black bar
   const width = 640;
-  const height = 120;
+  const height = 140;
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
 
@@ -24,13 +24,18 @@ export async function ensureOverlay(id: string, name: string): Promise<string> {
   ctx.fillStyle = "rgba(0,0,0,0.6)";
   ctx.fillRect(0, 0, width, height);
 
-  // Text
+  // Title
   ctx.fillStyle = "#FFFFFF";
-  const fontSize = 34;
-  ctx.font = `bold ${fontSize}px Arial, Helvetica, sans-serif`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText(name, width / 2, height / 2);
+  
+  ctx.font = `bold 36px Arial, Helvetica, sans-serif`;
+  ctx.fillText(title || "Let's cut the bloat.", width / 2, height * 0.35);
+
+  // Subtitle
+  ctx.font = `bold 20px Arial, Helvetica, sans-serif`;
+  ctx.fillStyle = "#E4E4E7"; // zinc-200
+  ctx.fillText(subtitle || "I'd love to show you a brief tear-down of your setup.", width / 2, height * 0.75);
 
   // Write PNG
   const buf = canvas.toBuffer("image/png");
