@@ -49,10 +49,10 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
       
       {/* Header Profile */}
       <div className="w-full max-w-4xl px-4 flex flex-col items-center mb-8">
-        <a href="https://www.linkedin.com/in/zachary-tushaus/" target="_blank" className="flex items-center justify-center gap-4 mb-4 hover:opacity-80 transition-opacity cursor-pointer">
+        <a href="https://www.linkedin.com/in/zach-tushaus/" target="_blank" className="flex items-center justify-center gap-4 mb-4 hover:opacity-80 transition-opacity cursor-pointer">
           <img 
-            src="/headshot.jpg" 
-            alt="Zach" 
+            src="/headshot.jpeg" 
+            alt="Zachary Tushaus" 
             className="w-16 h-16 rounded-full object-cover border-2 border-blue-500 shadow-lg"
           />
           <div className="flex flex-col text-left">
