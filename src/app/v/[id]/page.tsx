@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, GetObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const s3Client = new S3Client({
@@ -17,24 +17,24 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
 
   let videoUrl = "";
 
+    let fileExists = false;
     try {
-      const command = new GetObjectCommand({
-        Bucket: "godel-video",
-        Key: `${id}.mp4`,
-      });
-      videoUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
-    } catch (error) {
-      console.error("Failed to generate signed URL:", error);
-      // Let's try .mov if .mp4 fails just in case
+      videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}.mp4` }), { expiresIn: 3600 });
+      // To strictly check if it exists in S3 without just blindly generating a URL
+      await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}.mp4` }));
+      fileExists = true;
+    } catch {
       try {
-        const fallbackCommand = new GetObjectCommand({
-          Bucket: "godel-video",
-          Key: `${id}.mov`, 
-        });
-        videoUrl = await getSignedUrl(s3Client, fallbackCommand, { expiresIn: 3600 });
-      } catch (fallbackError) {
-        return notFound();
+        videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}.mov` }), { expiresIn: 3600 });
+        await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}.mov` }));
+        fileExists = true;
+      } catch {
+        // Doesn't exist
       }
+    }
+
+    if (!fileExists) {
+      return notFound();
     }
 
   return (
