@@ -6,7 +6,7 @@
 - Local:         http://localhost:3000
 - Network:       http://192.168.1.151:3000
 - Environments: .env.local
-✓ Ready in 267ms
+✓ Ready in 258ms
 ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
  We detected multiple lockfiles and selected the directory of /Users/godelbot/Desktop/workspace/package-lock.json as the root directory.
  To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
@@ -15,9 +15,9 @@
    * /Users/godelbot/Desktop/workspace/godel-video-app/package-lock.json
 
 
- GET / 200 in 179ms (next.js: 81ms, application-code: 97ms)
- GET / 200 in 25ms (next.js: 892µs, application-code: 24ms)
+ GET / 200 in 190ms (next.js: 89ms, application-code: 101ms)
+ GET / 200 in 57ms (next.js: 3ms, application-code: 54ms)
 Uploading to Cloudflare R2 bucket: godel-video
 Successfully uploaded to R2.
- POST /api/upload 200 in 7.0s (next.js: 674ms, application-code: 6.3s)
-✓ Compiled in 395ms
+ POST /api/upload 200 in 4.2s (next.js: 229ms, application-code: 4.0s)
+✓ Compiled in 275ms
