@@ -90,7 +90,7 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
           data-url="https://calendly.com/zach-dl/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ececec" 
           style={{ minWidth: '320px', height: '600px' }}
         ></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async dangerouslySetInnerHTML={{ __html: '' }}></script>
         {/* Calendly inline widget end */}
       </div>
       
