@@ -29,7 +29,14 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
         await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}.mov` }));
         fileExists = true;
       } catch {
+        try {
+          // One final check just for the raw initial ID file format since your browser prints that exact filename without extension
+          videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}` }), { expiresIn: 3600 });
+          await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}` }));
+          fileExists = true;
+        } catch {
         // Doesn't exist
+        }
       }
     }
 
