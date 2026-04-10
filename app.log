@@ -1,0 +1,199 @@
+
+> godel-video-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.151:3000
+- Environments: .env.local
+✓ Ready in 247ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/godelbot/Desktop/workspace/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/godelbot/Desktop/workspace/godel-video-app/package-lock.json
+
+
+ GET / 200 in 139ms (next.js: 66ms, application-code: 73ms)
+ GET / 200 in 47ms (next.js: 9ms, application-code: 38ms)
+Uploading to Cloudflare R2 bucket: godel-video
+Successfully uploaded to R2.
+ POST /api/upload 200 in 4.2s (next.js: 205ms, application-code: 4.0s)
+⨯ ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  [90m1 |[0m [36mimport[0m { notFound } [36mfrom[0m [32m"next/navigation"[0m;
+  [90m2 |[0m [36mimport[0m { [33mS3Client[0m, [33mGetObjectCommand[0m } [36mfrom[0m [32m"@aws-sdk/client-s3"[0m;
+[31m[1m>[0m [90m3 |[0m [36mimport[0m { getSignedUrl } [36mfrom[0m [32m"@aws-sdk/s3-request-presigner"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m4 |[0m
+  [90m5 |[0m [36mconst[0m s3Client = [36mnew[0m [33mS3Client[0m({
+  [90m6 |[0m   region: [32m"auto"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 500 in 806ms (next.js: 753ms, application-code: 54ms)
+[browser] Uncaught Error: ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+https://nextjs.org/docs/messages/module-not-found 
+✓ Compiled in 272ms
+ GET / 200 in 117ms (next.js: 52ms, application-code: 65ms)
+ GET / 200 in 47ms (next.js: 1213µs, application-code: 46ms)
+ GET / 200 in 21ms (next.js: 3ms, application-code: 19ms)
+ GET / 200 in 10ms (next.js: 991µs, application-code: 9ms)
+Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
+  13 |
+  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
+> 15 |   const { filename } = params;
+     |           ^
+  16 |
+  17 |   let videoUrl = "";
+  18 |
+Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
+    at ignore-listed frames
+ GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 404 in 406ms (next.js: 347ms, application-code: 58ms)
+[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./godel-video-app/src/app/watch/[id]/[filename]/page.tsx:3:1
+Module not found: Can't resolve '@aws-sdk/s3-request-presigner'
+  1 | import { notFound } from "next/navigation";
+  2 | import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+> 3 | import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | const s3Client = new S3Client({
+  6 |   region: "auto",
+
+https://nextjs.org/docs/messages/module-not-found 
+Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
+  13 |
+  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
+> 15 |   const { filename } = params;
+     |           ^
+  16 |
+  17 |   let videoUrl = "";
+  18 |
+Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
+    at ignore-listed frames
+ GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 404 in 63ms (next.js: 8ms, application-code: 54ms)
+Uploading to Cloudflare R2 bucket: godel-video
+Successfully uploaded to R2.
+ POST /api/upload 200 in 4.2s (next.js: 51ms, application-code: 4.2s)
+Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
+  13 |
+  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
+> 15 |   const { filename } = params;
+     |           ^
+  16 |
+  17 |   let videoUrl = "";
+  18 |
+Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
+    at ignore-listed frames
+ GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 404 in 52ms (next.js: 5ms, application-code: 48ms)
+ GET / 200 in 48ms (next.js: 3ms, application-code: 44ms)
+Uploading to Cloudflare R2 bucket: godel-video
+Successfully uploaded to R2.
+ POST /api/upload 200 in 5.4s (next.js: 8ms, application-code: 5.4s)
+Error: Route "/watch/[id]/[filename]" used `params.filename`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at WatchPage (src/app/watch/[id]/[filename]/page.tsx:15:11)
+  13 |
+  14 | export default async function WatchPage({ params }: { params: { id: string, filename: stri...
+> 15 |   const { filename } = params;
+     |           ^
+  16 |
+  17 |   let videoUrl = "";
+  18 |
+Failed to generate signed URL: Error: No value provided for input HTTP label: Key.
+    at ignore-listed frames
+ GET /watch/e907de0d-69c6-4970-8320-36154bed8a3f/e907de0d-69c6-4970-8320-36154bed8a3f.mp4 404 in 73ms (next.js: 8ms, application-code: 64ms)
+ GET / 200 in 100ms (next.js: 5ms, application-code: 96ms)
+ GET /watch/531a5a64-dc45-44ee-a47b-f0009d90282b/531a5a64-dc45-44ee-a47b-f0009d90282b.mp4 200 in 83ms (next.js: 5ms, application-code: 78ms)
+ GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 200 in 83ms (next.js: 27ms, application-code: 56ms)
+ GET /watch/e907de0d-69c6-4970-8320-36154bed8a3f/e907de0d-69c6-4970-8320-36154bed8a3f.mp4 200 in 59ms (next.js: 21ms, application-code: 38ms)
+ GET /watch/daa67380-7645-4959-b953-d07fe667559f/daa67380-7645-4959-b953-d07fe667559f.mp4 200 in 81ms (next.js: 20ms, application-code: 61ms)
