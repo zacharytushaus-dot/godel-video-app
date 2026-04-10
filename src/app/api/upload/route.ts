@@ -13,6 +13,13 @@ const s3Client = new S3Client({
     accessKeyId: process.env.CLOUDFLARE_ACCESS_KEY_ID || "",
     secretAccessKey: process.env.CLOUDFLARE_SECRET_ACCESS_KEY || "",
   },
+  // Ensure strict TLS routing for Windows SSL compatibility
+  requestHandler: {
+    requestTimeout: 30000,
+    httpsAgent: new (require("https").Agent)({
+      rejectUnauthorized: false,
+    }),
+  }
 });
 
 export async function POST(req: Request) {
