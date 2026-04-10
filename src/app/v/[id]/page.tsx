@@ -76,8 +76,6 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
 
       {/* Calendly / CTA */}
       <div className="mt-12 w-full max-w-xl px-4 text-center pb-24">
-        <h2 className="text-2xl font-bold mb-3 text-white">Let's cut the bloat.</h2>
-        <p className="text-zinc-400 mb-8 text-sm">Find time on my calendar below for a brief tear-down of your current terminal setup.</p>
         
         <div className="h-[500px] w-full bg-zinc-900 flex items-center justify-center rounded-xl border border-zinc-800">
           <div className="text-center p-6">
