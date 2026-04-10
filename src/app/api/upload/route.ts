@@ -77,7 +77,7 @@ export async function POST(req: Request) {
       id,
       videoKey: filename,
       gifUrl: `/gifs/${gifFilename}`,
-      watchUrl: `${publicBaseUrl}/v/${filename}`
+      watchUrl: `${publicBaseUrl}/v/${id}`
     });
 
   } catch (error: any) {
