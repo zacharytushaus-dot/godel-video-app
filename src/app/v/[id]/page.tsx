@@ -15,26 +15,21 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  // We encoded the prospect name and company name at the end of the slug with -- delimiters
-  const parts = id.split('--');
-  const baseKey = parts[0];
+  // We used a metadata JSON fallback mapping approach to keep the URL completely clean
+  const baseKey = id;
   let formattedName = "";
   let formattedCompany = "";
   
-  if (parts.length > 1) {
-    try {
-      formattedName = Buffer.from(parts[1], 'base64').toString('ascii');
-    } catch {
-      formattedName = "";
+  try {
+    const metaResponse = await s3Client.send(new GetObjectCommand({ Bucket: "godel-video", Key: `${baseKey}.json` }));
+    if (metaResponse.Body) {
+      const metaText = await metaResponse.Body.transformToString();
+      const meta = JSON.parse(metaText);
+      formattedName = meta.prospectName || "";
+      formattedCompany = meta.companyName || "";
     }
-  }
-
-  if (parts.length > 2) {
-    try {
-      formattedCompany = Buffer.from(parts[2], 'base64').toString('ascii');
-    } catch {
-      formattedCompany = "";
-    }
+  } catch (e) {
+    // No metadata found, fallback to generic
   }
 
   let videoUrl = "";

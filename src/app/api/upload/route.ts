@@ -38,16 +38,15 @@ export async function POST(req: Request) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
     
-    // Instead of random hashes, make the ID hyper-personalized and clean
-    const shortHash = uuidv4().slice(0, 4);
+    // Create a database entry placeholder approach by using just the slug
     // Clean the inputted slug to be URL-safe (lowercase, replace spaces with dashes, remove special chars)
     const cleanSlug = slugInput.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-    
-    // We encode the prospect name and company name straight into the ID string separated by a double dash delimiter so Vercel can decode it
-    // Using base64 to ensure spaces and special chars in names don't break the URL path
-    const encodedName = Buffer.from(prospectName).toString('base64');
-    const encodedCompany = Buffer.from(companyName).toString('base64');
-    const id = `${cleanSlug}-${shortHash}--${encodedName}--${encodedCompany}`;
+    const id = cleanSlug;
+
+    // Optional: write a small JSON file metadata locally to map the slug to the actual name/company
+    // This allows the Next.js viewer to read metadata directly without putting it into the URL string.
+    const metadata = { prospectName, companyName };
+    await writeFile(path.join(process.cwd(), "public/uploads", `${id}.json`), JSON.stringify(metadata));
 
     const videoExt = path.extname(file.name) || ".mp4";
     const filename = `${id}${videoExt}`;
@@ -65,7 +64,17 @@ export async function POST(req: Request) {
           ContentType: file.type || "video/mp4",
         })
       );
-      console.log("Successfully uploaded to R2.");
+      
+      // Also upload the metadata JSON to R2
+      await s3Client.send(
+        new PutObjectCommand({
+          Bucket: "godel-video",
+          Key: `${id}.json`,
+          Body: JSON.stringify(metadata),
+          ContentType: "application/json",
+        })
+      );
+      console.log("Successfully uploaded video and metadata to R2.");
     } catch (s3Error: any) {
       console.error("Failed to upload to R2:", s3Error);
       return NextResponse.json({ error: "Cloud storage upload failed", details: s3Error?.message ?? "" }, { status: 500 });

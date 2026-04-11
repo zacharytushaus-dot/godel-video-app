@@ -18,3 +18,11 @@
  GET / 200 in 153ms (next.js: 81ms, application-code: 71ms)
 ✓ Compiled in 319ms
  GET / 200 in 71ms (next.js: 33ms, application-code: 38ms)
+ GET / 200 in 72ms (next.js: 6ms, application-code: 67ms)
+Uploading to Cloudflare R2 bucket: godel-video
+Successfully uploaded to R2.
+ POST /api/upload 200 in 9.5s (next.js: 213ms, application-code: 9.3s)
+ GET / 200 in 83ms (next.js: 43ms, application-code: 39ms)
+ GET / 200 in 7ms (next.js: 951µs, application-code: 7ms)
+ GET / 200 in 12ms (next.js: 680µs, application-code: 11ms)
+ GET / 200 in 6ms (next.js: 516µs, application-code: 6ms)
