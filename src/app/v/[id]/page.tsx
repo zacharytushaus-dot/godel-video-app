@@ -15,30 +15,36 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  // Convert URL slug back to title format (e.g. rich-hunter-capital -> Rich Hunter Capital)
-  // Split on dashes, remove trailing 4 char hash
-  const slugParts = id.split('-');
-  const nameParts = slugParts.slice(0, -1);
-  const formattedName = nameParts.length > 0 
-    ? nameParts.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
-    : "Let's talk!";
+  // We encoded the prospect name at the end of the slug with -- delimiter
+  const parts = id.split('--');
+  const baseKey = parts[0];
+  let formattedName = "";
+  
+  if (parts.length > 1) {
+    try {
+      formattedName = Buffer.from(parts[1], 'base64').toString('ascii');
+    } catch {
+      formattedName = "";
+    }
+  }
 
+  let videoUrl = "";
   let fileExists = false;
   try {
-    videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}.mp4` }), { expiresIn: 3600 });
+    videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${baseKey}.mp4` }), { expiresIn: 3600 });
       // To strictly check if it exists in S3 without just blindly generating a URL
-      await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}.mp4` }));
+      await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${baseKey}.mp4` }));
       fileExists = true;
     } catch {
       try {
-        videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}.mov` }), { expiresIn: 3600 });
-        await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}.mov` }));
+        videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${baseKey}.mov` }), { expiresIn: 3600 });
+        await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${baseKey}.mov` }));
         fileExists = true;
       } catch {
         try {
           // One final check just for the raw initial ID file format since your browser prints that exact filename without extension
-          videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}` }), { expiresIn: 3600 });
-          await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}` }));
+          videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${baseKey}` }), { expiresIn: 3600 });
+          await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${baseKey}` }));
           fileExists = true;
         } catch {
         // Doesn't exist
@@ -88,7 +94,7 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
       {/* Calendly / CTA */}
       <div className="mt-12 w-full max-w-xl px-4 text-center pb-24">
         <h2 className="text-2xl font-bold mb-3 text-white">
-          {nameParts.length > 0 ? `Let's talk, ${formattedName}.` : "Let's talk!"}
+          {formattedName ? `Let's talk, ${formattedName}.` : "Let's talk!"}
         </h2>
         <p className="text-zinc-400 mb-8 text-sm md:text-base">If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in.</p>
         

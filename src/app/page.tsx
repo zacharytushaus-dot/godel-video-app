@@ -4,18 +4,20 @@ import { useState } from "react";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
-  const [name, setName] = useState("");
+  const [slug, setSlug] = useState("");
+  const [prospectName, setProspectName] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file || !name) return;
+    if (!file || !slug || !prospectName) return;
 
     setLoading(true);
     const formData = new FormData();
     formData.append("video", file);
-    formData.append("name", name);
+    formData.append("slug", slug);
+    formData.append("prospectName", prospectName);
 
     try {
       const res = await fetch("/api/upload", {
@@ -40,10 +42,17 @@ export default function Home() {
       <form onSubmit={handleUpload} className="flex flex-col gap-4 w-full max-w-md">
         <input 
           type="text" 
-          placeholder="Target Label (e.g. Rich - Hunter Capital)" 
+          placeholder="URL Slug (e.g. rich-hunter-capital)" 
           className="p-3 bg-zinc-800 rounded border border-zinc-700"
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
+          value={slug} 
+          onChange={(e) => setSlug(e.target.value)} 
+        />
+        <input 
+          type="text" 
+          placeholder="Prospect Name (e.g. Rich)" 
+          className="p-3 bg-zinc-800 rounded border border-zinc-700"
+          value={prospectName} 
+          onChange={(e) => setProspectName(e.target.value)} 
         />
         <input 
           type="file" 
@@ -54,10 +63,10 @@ export default function Home() {
         
         <button 
           type="submit" 
-          disabled={loading || !file || !name}
+          disabled={loading || !file || !slug || !prospectName}
           className="bg-blue-600 hover:bg-blue-500 disabled:bg-zinc-600 font-bold p-3 rounded transition"
         >
-          {loading ? "Processing..." : "Generate Loom Killer"}
+          {loading ? "Processing..." : "Generate Thumbnail"}
         </button>
       </form>
 
