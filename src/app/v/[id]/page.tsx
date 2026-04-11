@@ -64,14 +64,14 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center pt-12 font-sans">
       
       {/* Header Profile */}
-      <div className="w-full max-w-4xl px-4 flex flex-col items-center mb-6 relative">
-        <a href="https://www.linkedin.com/in/zach-tushaus/" target="_blank" className="flex items-center justify-center gap-4 mb-2 hover:opacity-80 transition-opacity cursor-pointer z-10">
+      <div className="w-full max-w-4xl px-4 flex flex-col items-center mb-8">
+        <a href="https://www.linkedin.com/in/zach-tushaus/" target="_blank" className="flex items-center justify-center gap-4 mb-4 hover:opacity-80 transition-opacity cursor-pointer">
           <img 
             src="/headshot.jpeg" 
             alt="Zachary Tushaus" 
             className="w-16 h-16 rounded-full object-cover border-2 border-blue-500 shadow-lg"
           />
-          <div className="flex flex-col text-left mb-2">
+          <div className="flex flex-col text-left">
             <h1 className="text-2xl font-bold tracking-tight text-white leading-tight flex items-center gap-2">
               Zach Tushaus
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-blue-400">
@@ -81,27 +81,6 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
             <p className="text-zinc-400 text-sm">Godel Terminal</p>
           </div>
         </a>
-
-        {/* Hand-drawn arrow SVG pointing to video player */}
-        <div className="hidden md:block absolute -bottom-6 right-1/4 transform translate-x-12 opacity-80 z-0">
-          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" className="text-white drop-shadow-md">
-            <path 
-              d="M10 20 Q 50 10, 80 50 T 80 80" 
-              stroke="currentColor" 
-              strokeWidth="3" 
-              strokeLinecap="round" 
-              fill="none" 
-            />
-            <path 
-              d="M60 70 L 80 80 L 90 60" 
-              stroke="currentColor" 
-              strokeWidth="3" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              fill="none" 
-            />
-          </svg>
-        </div>
       </div>
 
       {/* Video Player */}
