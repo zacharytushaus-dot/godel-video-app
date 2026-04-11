@@ -98,12 +98,12 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
       {/* Calendly / CTA */}
       <div className="mt-12 w-full max-w-xl px-4 text-center pb-24">
         <h2 className="text-2xl font-bold mb-3 text-white">
-          {formattedName ? `Let's talk, ${formattedName}.` : "Let's talk!"}
+          {formattedName ? `Thoughts on this, ${formattedName}?` : "Thoughts?"}
         </h2>
         <p className="text-zinc-400 mb-8 text-sm md:text-base">
           {formattedCompany 
-            ? `If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in at ${formattedCompany}.` 
-            : `If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in.`}
+            ? `If you're tired of navigating a clunky interface to get the data you actually need at ${formattedCompany}, grab 10 minutes below. We can see if Godel is a better fit.` 
+            : `If you're tired of navigating a clunky interface to get the data you actually need, grab 10 minutes below. We can see if Godel is a better fit.`}
         </p>
         
         {/* Calendly inline widget begin */}
