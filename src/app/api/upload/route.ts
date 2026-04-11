@@ -31,12 +31,16 @@ export async function POST(req: Request) {
     const name = formData.get("name") as string;
 
     if (!file || !name) {
-      return NextResponse.json({ error: "Missing video" }, { status: 400 });
+      return NextResponse.json({ error: "Missing video or name" }, { status: 400 });
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    // Create a 6 character short ID instead of a massive 36 character UUID
-    const id = uuidv4().slice(0, 6);
+    
+    // Instead of random hashes, make the ID hyper-personalized and clean (e.g. rich-hunter-capital)
+    const shortHash = uuidv4().slice(0, 4);
+    // Clean the inputted name to be URL-safe (lowercase, replace spaces with dashes, remove special chars)
+    const cleanName = name.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+    const id = `${cleanName}-${shortHash}`;
 
     const videoExt = path.extname(file.name) || ".mp4";
     const filename = `${id}${videoExt}`;
@@ -60,19 +64,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Cloud storage upload failed", details: s3Error?.message ?? "" }, { status: 500 });
     }
 
-    const overlayPath = await ensureOverlay(id, name);
-
     const gifFilename = `${id}.gif`;
     const gifPath = path.join(process.cwd(), "public/gifs", gifFilename);
 
+    // Generate pure raw GIF with NO text overlays at all
     await new Promise((resolve, reject) => {
       ffmpeg(videoPath)
-        .input(overlayPath)
         .complexFilter([
-          "[0:v] fps=10,scale=480:-1 [scaled]",
-          "[1:v] scale=480:-1 [ov]",
-          "[scaled][ov] overlay=(main_w-overlay_w)/2:(main_h-overlay_h-10) [out]"
-        ], "out")
+          "[0:v] fps=10,scale=480:-1,split [a][b]; [a] palettegen [p]; [b][p] paletteuse"
+        ])
         .duration(3)
         .output(gifPath)
         .on("end", resolve)

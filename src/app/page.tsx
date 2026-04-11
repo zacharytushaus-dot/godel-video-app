@@ -40,7 +40,7 @@ export default function Home() {
       <form onSubmit={handleUpload} className="flex flex-col gap-4 w-full max-w-md">
         <input 
           type="text" 
-          placeholder="GIF Overlay Text (e.g. Hey Rich - Godel Demo)" 
+          placeholder="Target Label (e.g. Rich - Hunter Capital)" 
           className="p-3 bg-zinc-800 rounded border border-zinc-700"
           value={name} 
           onChange={(e) => setName(e.target.value)} 

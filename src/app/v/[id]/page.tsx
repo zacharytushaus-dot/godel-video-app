@@ -15,11 +15,17 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  let videoUrl = "";
+  // Convert URL slug back to title format (e.g. rich-hunter-capital -> Rich Hunter Capital)
+  // Split on dashes, remove trailing 4 char hash
+  const slugParts = id.split('-');
+  const nameParts = slugParts.slice(0, -1);
+  const formattedName = nameParts.length > 0 
+    ? nameParts.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    : "Let's talk!";
 
-    let fileExists = false;
-    try {
-      videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}.mp4` }), { expiresIn: 3600 });
+  let fileExists = false;
+  try {
+    videoUrl = await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: "godel-video", Key: `${id}.mp4` }), { expiresIn: 3600 });
       // To strictly check if it exists in S3 without just blindly generating a URL
       await s3Client.send(new HeadObjectCommand({ Bucket: "godel-video", Key: `${id}.mp4` }));
       fileExists = true;
@@ -81,7 +87,9 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
 
       {/* Calendly / CTA */}
       <div className="mt-12 w-full max-w-xl px-4 text-center pb-24">
-        <h2 className="text-2xl font-bold mb-3 text-white">Let’s talk!</h2>
+        <h2 className="text-2xl font-bold mb-3 text-white">
+          {nameParts.length > 0 ? `Let's talk, ${formattedName}.` : "Let's talk!"}
+        </h2>
         <p className="text-zinc-400 mb-8 text-sm md:text-base">If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in.</p>
         
         {/* Calendly inline widget begin */}
