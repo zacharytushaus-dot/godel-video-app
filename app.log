@@ -41,3 +41,10 @@ Successfully uploaded video and metadata to R2.
  GET / 200 in 63ms (next.js: 13ms, application-code: 50ms)
  GET / 200 in 15ms (next.js: 3ms, application-code: 12ms)
 ✓ Compiled in 129ms
+Uploading to Cloudflare R2 bucket: godel-video
+Successfully uploaded video and metadata to R2.
+ POST /api/upload 200 in 1193ms (next.js: 8ms, application-code: 1184ms)
+ GET / 200 in 85ms (next.js: 45ms, application-code: 40ms)
+ GET / 200 in 6ms (next.js: 740µs, application-code: 6ms)
+ GET / 200 in 12ms (next.js: 537µs, application-code: 11ms)
+ GET / 200 in 6ms (next.js: 591µs, application-code: 6ms)

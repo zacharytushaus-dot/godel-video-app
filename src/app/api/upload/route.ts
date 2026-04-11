@@ -3,7 +3,7 @@ import { writeFile } from "fs/promises";
 import * as path from "path";
 import { v4 as uuidv4 } from "uuid";
 import ffmpeg from "fluent-ffmpeg";
-import { ensureOverlay } from "@/lib/overlay";
+import { ensurePlayButton } from "@/lib/overlay";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 import { NodeHttpHandler } from "@smithy/node-http-handler";
@@ -80,15 +80,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Cloud storage upload failed", details: s3Error?.message ?? "" }, { status: 500 });
     }
 
+    const playOverlayPath = await ensurePlayButton(id);
+
     const gifFilename = `${id}.gif`;
     const gifPath = path.join(process.cwd(), "public/gifs", gifFilename);
 
-    // Generate pure raw GIF with NO text overlays at all
+    // Generate pure raw GIF with play button overlay
     await new Promise((resolve, reject) => {
       ffmpeg(videoPath)
+        .input(playOverlayPath)
         .complexFilter([
-          "[0:v] fps=10,scale=480:-1,split [a][b]; [a] palettegen [p]; [b][p] paletteuse"
-        ])
+          "[0:v] fps=10,scale=480:-1,split [a][b];",
+          "[1:v] scale=480:-1 [ov];",
+          "[a] palettegen [p];",
+          "[b][ov] overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2 [merged];",
+          "[merged][p] paletteuse"
+        ].join(' '))
         .duration(3)
         .output(gifPath)
         .on("end", resolve)
