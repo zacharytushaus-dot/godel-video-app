@@ -15,36 +15,9 @@
    * /Users/godelbot/Desktop/workspace/godel-video-app/package-lock.json
 
 
- GET / 200 in 153ms (next.js: 81ms, application-code: 71ms)
-✓ Compiled in 319ms
- GET / 200 in 71ms (next.js: 33ms, application-code: 38ms)
- GET / 200 in 72ms (next.js: 6ms, application-code: 67ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded to R2.
- POST /api/upload 200 in 9.5s (next.js: 213ms, application-code: 9.3s)
- GET / 200 in 83ms (next.js: 43ms, application-code: 39ms)
- GET / 200 in 7ms (next.js: 951µs, application-code: 7ms)
- GET / 200 in 12ms (next.js: 680µs, application-code: 11ms)
- GET / 200 in 6ms (next.js: 516µs, application-code: 6ms)
- GET / 200 in 88ms (next.js: 6ms, application-code: 82ms)
+ GET / 200 in 165ms (next.js: 83ms, application-code: 81ms)
+ GET / 200 in 53ms (next.js: 9ms, application-code: 44ms)
 Uploading to Cloudflare R2 bucket: godel-video
 Successfully uploaded video and metadata to R2.
- POST /api/upload 200 in 4.5s (next.js: 56ms, application-code: 4.4s)
- GET / 200 in 62ms (next.js: 11ms, application-code: 51ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded video and metadata to R2.
- POST /api/upload 200 in 7.7s (next.js: 5ms, application-code: 7.7s)
- GET / 200 in 48ms (next.js: 5ms, application-code: 43ms)
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded video and metadata to R2.
- POST /api/upload 200 in 6.3s (next.js: 6ms, application-code: 6.3s)
- GET / 200 in 63ms (next.js: 13ms, application-code: 50ms)
- GET / 200 in 15ms (next.js: 3ms, application-code: 12ms)
-✓ Compiled in 129ms
-Uploading to Cloudflare R2 bucket: godel-video
-Successfully uploaded video and metadata to R2.
- POST /api/upload 200 in 1193ms (next.js: 8ms, application-code: 1184ms)
- GET / 200 in 85ms (next.js: 45ms, application-code: 40ms)
- GET / 200 in 6ms (next.js: 740µs, application-code: 6ms)
- GET / 200 in 12ms (next.js: 537µs, application-code: 11ms)
- GET / 200 in 6ms (next.js: 591µs, application-code: 6ms)
+ POST /api/upload 200 in 4.6s (next.js: 247ms, application-code: 4.4s)
+✓ Compiled in 309ms

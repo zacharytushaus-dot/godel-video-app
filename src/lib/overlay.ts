@@ -23,31 +23,50 @@ export async function ensurePlayButton(id: string): Promise<string> {
   // Center coordinates
   const cx = width / 2;
   const cy = height / 2;
-  const radius = 50;
+  const radius = 55;
 
   // Draw semi-transparent circle background
   ctx.beginPath();
   ctx.arc(cx, cy, radius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+  // Add a nice subtle blur shadow to the backdrop
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+  ctx.shadowBlur = 15;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 4;
+  ctx.fillStyle = "rgba(0, 0, 0, 0.65)";
   ctx.fill();
 
+  // Reset shadow for the border stroke
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+
   // Draw outer white border
-  ctx.lineWidth = 4;
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
   ctx.stroke();
 
-  // Draw play triangle inside
+  // Draw play triangle inside with perfectly calculated center of mass and rounded joints
+  // In a triangle, the visual center of mass is different than the bounding box center. 
+  // The centroid of a triangle is at 1/3 of its height from the base.
   ctx.beginPath();
-  // Offset slightly to the right to visually center the triangle
-  const triCenterX = cx + 5; 
-  const triSize = 20;
+  const triSize = 22;
+  const triHeight = triSize * Math.sqrt(3); // Equilateral triangle height
   
-  ctx.moveTo(triCenterX - triSize, cy - triSize * 1.2);
-  ctx.lineTo(triCenterX + triSize * 1.5, cy);
-  ctx.lineTo(triCenterX - triSize, cy + triSize * 1.2);
+  // The offset pulls the triangle to the right by exactly the centroid math difference
+  const xOffset = cx + (triSize * 0.3);
+  
+  ctx.lineJoin = "round";
+  ctx.lineWidth = 6;
+  ctx.moveTo(xOffset - triSize, cy - triHeight / 2);
+  ctx.lineTo(xOffset + triSize, cy);
+  ctx.lineTo(xOffset - triSize, cy + triHeight / 2);
   ctx.closePath();
   
-  ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+  ctx.fillStyle = "rgba(255, 255, 255, 1)";
+  ctx.strokeStyle = "rgba(255, 255, 255, 1)";
+  // Use stroke to smooth out the sharp corners natively in canvas
+  ctx.stroke();
   ctx.fill();
 
   // Write PNG
