@@ -102,8 +102,8 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
         </h2>
         <p className="text-zinc-400 mb-8 text-sm md:text-base">
           {formattedCompany 
-            ? `If you're tired of navigating a clunky interface to get the data you actually need at ${formattedCompany}, grab 10 minutes below. We can see if Godel is a better fit.` 
-            : `If you're tired of navigating a clunky interface to get the data you actually need, grab 10 minutes below. We can see if Godel is a better fit.`}
+            ? `If you're tired of using a clunky interface to get the data you actually need at ${formattedCompany}, grab 10 minutes below. We can see if Godel is a better fit.` 
+            : `If you're tired of using a clunky interface to get the data you actually need, grab 10 minutes below. We can see if Godel is a better fit.`}
         </p>
         
         {/* Calendly inline widget begin */}
