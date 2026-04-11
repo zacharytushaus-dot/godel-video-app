@@ -15,16 +15,25 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
-  // We encoded the prospect name at the end of the slug with -- delimiter
+  // We encoded the prospect name and company name at the end of the slug with -- delimiters
   const parts = id.split('--');
   const baseKey = parts[0];
   let formattedName = "";
+  let formattedCompany = "";
   
   if (parts.length > 1) {
     try {
       formattedName = Buffer.from(parts[1], 'base64').toString('ascii');
     } catch {
       formattedName = "";
+    }
+  }
+
+  if (parts.length > 2) {
+    try {
+      formattedCompany = Buffer.from(parts[2], 'base64').toString('ascii');
+    } catch {
+      formattedCompany = "";
     }
   }
 
@@ -96,7 +105,11 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
         <h2 className="text-2xl font-bold mb-3 text-white">
           {formattedName ? `Let's talk, ${formattedName}.` : "Let's talk!"}
         </h2>
-        <p className="text-zinc-400 mb-8 text-sm md:text-base">If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in.</p>
+        <p className="text-zinc-400 mb-8 text-sm md:text-base">
+          {formattedCompany 
+            ? `If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in at ${formattedCompany}.` 
+            : `If the video caught your attention, grab a quick 10 minutes below to see if Godel makes sense to swap in.`}
+        </p>
         
         {/* Calendly inline widget begin */}
         <div className="rounded-xl border border-zinc-800 overflow-hidden shadow-2xl bg-zinc-900 w-full h-[700px]">

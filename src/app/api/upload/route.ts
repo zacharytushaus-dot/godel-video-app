@@ -30,22 +30,24 @@ export async function POST(req: Request) {
     const file = formData.get("video") as File;
     const slugInput = formData.get("slug") as string;
     const prospectName = formData.get("prospectName") as string;
+    const companyName = formData.get("companyName") as string;
 
-    if (!file || !slugInput || !prospectName) {
+    if (!file || !slugInput || !prospectName || !companyName) {
       return NextResponse.json({ error: "Missing video or form fields" }, { status: 400 });
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
     
-    // Instead of random hashes, make the ID hyper-personalized and clean (e.g. rich-hunter-capital--NAME--Rich)
+    // Instead of random hashes, make the ID hyper-personalized and clean
     const shortHash = uuidv4().slice(0, 4);
     // Clean the inputted slug to be URL-safe (lowercase, replace spaces with dashes, remove special chars)
     const cleanSlug = slugInput.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
     
-    // We encode the prospect name straight into the ID string separated by a double dash delimiter so Vercel can decode it
+    // We encode the prospect name and company name straight into the ID string separated by a double dash delimiter so Vercel can decode it
     // Using base64 to ensure spaces and special chars in names don't break the URL path
     const encodedName = Buffer.from(prospectName).toString('base64');
-    const id = `${cleanSlug}-${shortHash}--${encodedName}`;
+    const encodedCompany = Buffer.from(companyName).toString('base64');
+    const id = `${cleanSlug}-${shortHash}--${encodedName}--${encodedCompany}`;
 
     const videoExt = path.extname(file.name) || ".mp4";
     const filename = `${id}${videoExt}`;
